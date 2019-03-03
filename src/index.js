@@ -1,12 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'mobx-react';
+
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import './style/main.scss';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import coinsStore from './stores/coinsStore';
+import userStore from './stores/userStore';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+function initState() {
+  coinsStore.fetchCoins()
+    .then(() => coinsStore.startSocket())
+    .then(() => coinsStore.readSocket());
+  
+  setInterval(() => {
+    coinsStore.refreshData();
+  },10000);
+  
+  userStore.initUserFromLocalStorage();
+}
+
+
+initState();
+
+const stores = {
+  coinsStore,
+  userStore
+};
+
+ReactDOM.render(
+  <Provider {...stores}>
+    <App/>
+  </Provider>,
+document.getElementById('root'));

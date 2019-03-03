@@ -1,28 +1,36 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react';
+import { Router } from '@reach/router';
+import DevTools from 'mobx-react-devtools';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import './style/table.scss';
+
+import Header from './ui/Header';
+import LoadingPage from './ui/LoadingPage';
+
+const Home = React.lazy(() => import('./pages/Home'));
+const About = React.lazy(() => import('./pages/About'));
+const Coins = React.lazy(() => import('./pages/Coins'));
+const SingleCoin = React.lazy(() => import('./pages/SingleCoin'));
+const Stocks = React.lazy(() => import('./pages/Stocks'));
+const SingleStock = React.lazy(() => import('./pages/SingleStock'));
+const Profile = React.lazy(() => import('./pages/Profile'));
+
+const App = () => (
+  <React.Fragment>
+    <Header/>
+    <Suspense fallback={<LoadingPage/>}>
+      <Router primary={false}>
+        <Home path='/' />
+        <Coins path='/coins' />
+        <SingleCoin path='/coins/:coin' />
+        <Stocks path='/stocks' />
+        <SingleStock path='/stocks/:symbol' />
+        <About path='/about' />
+        <Profile path='/profile' />
+      </Router>
+    </Suspense>
+    <DevTools/>
+  </React.Fragment>
+);
 
 export default App;

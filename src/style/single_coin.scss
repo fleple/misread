@@ -1,0 +1,112 @@
+.single-coin-page {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.single-coin-top {
+  display: flex;
+  // width: 70%; 
+  justify-content: space-between;
+}
+
+.coin-trade {
+  display: flex;
+  justify-content: space-between;
+  width: 55%;
+  // border: 1px solid red;
+  // margin-left: 5%;
+}
+
+.coin-trade-form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--borderColor);
+  padding: 20px 30px;
+  border-radius: 4px;
+  input {
+    display: block;
+    border: 1px solid var(--borderColor);
+    background-color: var(--bg);
+    color: var(--color);
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all .2s ease-in-out;
+    width: 230px;
+    &:focus,&:hover {
+      cursor: pointer;
+      border: 1px solid var(--color);
+    }
+  }
+  button {
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: var(--bg);
+    color: var(--color);
+    border: 1px solid var(--borderColor);
+    transition: all .2s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      border: 1px solid var(--color);
+    }
+  }
+}
+
+.coin-info {
+  border: 1px solid var(--borderColor);
+  padding: 20px;
+  width: 20%;
+  text-align: center;
+  border-radius: 4px;
+  hr {
+    border: none;
+    background-color: var(--borderColor);
+    height: 2px;
+    margin-bottom: 20px;
+  }
+
+  .info-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .wrap-img {
+    width: 40px;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.chart {
+  margin-top: 10px;
+  height: 500px;
+}
+
+.buttons-history {
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  button {
+    font-size: 14px;
+    padding: 10px;
+    width: 19%;
+    border: 1px solid var(--borderColor);
+    color: var(--color);
+    background-color: var(--bg);
+    border-radius: 4px;
+    transition: all .3s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      color: var(--bg);
+      background-color: var(--color);
+    }
+  }
+}
