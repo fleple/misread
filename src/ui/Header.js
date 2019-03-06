@@ -30,6 +30,7 @@ class Header extends Component {
     const { userStore } = this.props;
 
     return (
+      <div className='header-wrap'>
       <header className='header'>
         <nav>
           <ul className='header-list'>
@@ -65,6 +66,7 @@ class Header extends Component {
           </Modal>
         )}
     </header>
+    </div>
     )
   }
 

@@ -19,14 +19,19 @@ const BuyCoin = (props) => {
     setCountCoin(fixNum(count / price, 4));
   }
 
+  const clearForm = () => {
+    setCountCoin('');
+    setTotalPrice('');
+  }
+
   const buyCoins = (e) => {
     e.preventDefault();
     const buyInfo = {
       count: countCoin,
-      price,
       id,
       symbol
     };
+    clearForm();
     buy(buyInfo);
   }
 

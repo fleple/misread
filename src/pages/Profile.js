@@ -1,11 +1,20 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
-import { Link } from '@reach/router';
+
+import UserCoins from '../components/Profile/UserCoins';
 
 import '../style/profile.scss';
 
 const Profile = (props) => {
-  const { userStore } = props;
+  const { userStore, coinsStore } = props;
+
+  let sum = userStore.userData.money;
+  for(let i = 0; i < userStore.userData.coins.length; i++) {
+    let current = coinsStore.coins[userStore.userData.coins[i].id];
+    if(current && current.priceUsd) {
+      sum += Number(current.priceUsd) * userStore.userData.coins[i].count;
+    }
+  }
 
   return (
     <div className='profile'>
@@ -15,29 +24,16 @@ const Profile = (props) => {
           <hr/>
           <h3>Cash: ${Number(userStore.userData.money).toFixed(4)}</h3>
         </div>
-        <div className='user-coins'>
-          <ul className='user-coins-list'>
-            {
-              userStore.userData.coins.map(coin => (
-                <li key={coin.id}>
-                  <Link to={`/coins/${coin.id}`}>
-                    <div className='left'>
-                      <div className='wrap-img'>
-                        <img src={`https://static.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`} alt='icon-coin'/>
-                      </div>
-                      <span className='coin-symbol'>{coin.symbol}</span>
-                    </div>
-                    <span className='coin-count'>{coin.count}</span>
-                  </Link>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
+        {
+          userStore.userData.coins.length &&
+          <div className='user-coins'>
+            <UserCoins coins={userStore.userData.coins}/>
+          </div>
+        }
         <div className='user-total-money'>
-          <h2>Total money</h2>
+          <h2>Total</h2>
           <hr/>
-          <h3>total cash computed</h3>
+          <h3>${sum.toFixed(4)}</h3>
         </div>
       </div>
       <div className='user-actions'>
@@ -47,4 +43,4 @@ const Profile = (props) => {
   )
 }
 
-export default inject('userStore')(observer(Profile));
+export default inject('userStore', 'coinsStore')(observer(Profile));

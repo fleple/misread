@@ -63,4 +63,9 @@
   border: 1px solid var(--borderColor);
   border-radius: 4px;
   text-align: center;
+  hr {
+    height: 1px;
+    border: none;
+    background-color: var(--borderColor);
+  }
 }

@@ -16,8 +16,10 @@ function initState() {
   setInterval(() => {
     coinsStore.refreshData();
   },10000);
-  
-  userStore.initUserFromLocalStorage();
+
+  if(localStorage.misread) {
+    userStore.initUserFromLocalStorage();
+  }
 }
 
 

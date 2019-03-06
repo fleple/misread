@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const SellCoin = (props) => {
   const [ countSell, setCountSell ] = useState("");
   const [ profitValue, setProfitValue ] = useState("");
-  const { price, id, symbol } = props;
+  const { price, id, symbol, sell } = props;
 
   const fixNum = (num, fix) => Number(num).toFixed(fix);
 
@@ -19,8 +19,25 @@ const SellCoin = (props) => {
     setCountSell(fixNum(count / price, 4));
   }
 
+  const clearForm = () => {
+    setCountSell('');
+    setProfitValue('');
+  }
+
+  const sellCoins = (e) => {
+    e.preventDefault();
+    const sellInfo ={
+      count: countSell,
+      id,
+      symbol
+    };
+
+    clearForm();
+    sell(sellInfo);
+  }
+
   return (
-    <form className='coin-trade-form'>
+    <form className='coin-trade-form' onSubmit={sellCoins}>
       <input
         type='number'
         value={countSell}

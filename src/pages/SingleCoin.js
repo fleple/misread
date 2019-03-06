@@ -6,6 +6,7 @@ import CoinInfo from '../components/SingleCoin/CoinInfo';
 import CoinTrade from '../components/SingleCoin/CoinTrade';
 import CoinChart from '../components/SingleCoin/CoinChart';
 import ButtonsHistory from '../components/SingleCoin/ButtonsHistory';
+import UserMoney from '../components/SingleCoin/UserMoney';
 
 class SingleCoin extends Component {
   componentDidMount() {
@@ -35,6 +36,13 @@ class SingleCoin extends Component {
               id={currentCoin.id}
               symbol={currentCoin.symbol}
               buy={userStore.buyCoins}
+              sell={userStore.sellCoins}
+            />
+            <UserMoney
+              user={userStore.userData}
+              counts={userStore.coinCounts}
+              symbol={currentCoin.symbol}
+              id={currentCoin.id}
             />
           </div>
 
