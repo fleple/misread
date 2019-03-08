@@ -63,6 +63,13 @@ class User {
     }
   }
 
+  logout = () => {
+    if(localStorage.misread) {
+      localStorage.misread = '';
+    }
+    this.userData = {};
+  }
+
   buyCoins = (info) => {
     const token = localStorage.misread;
     console.log(info);
@@ -101,6 +108,7 @@ class User {
     .catch(err => this.setError('sell', err));
   }
 
+  // should rename
   get coinCounts() {
     const obj = {};
     const { coins } = this.userData;
@@ -118,6 +126,7 @@ decorate(User, {
   error: observable,
   setUserData: action,
   setError: action,
+  logout: action,
   coinCounts: computed
 });
 

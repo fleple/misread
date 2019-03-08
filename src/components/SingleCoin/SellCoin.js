@@ -43,12 +43,14 @@ const SellCoin = (props) => {
         value={countSell}
         onChange={changeCount}
         placeholder={id}
+        step='any'
       />
       <input
         type='number'
         value={profitValue}
         onChange={changeProfit}
         placeholder='usd'
+        step='any'
       />
       <button type='submit'>Sell {symbol}</button>
     </form>

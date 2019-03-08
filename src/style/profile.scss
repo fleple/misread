@@ -69,3 +69,49 @@
     background-color: var(--borderColor);
   }
 }
+
+.table-history {
+  width: 800px;
+  margin-bottom: 20px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+thead {
+  color: var(--color);
+  background-color: var(--theadBg);
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+td, th {
+  color: var(--color);
+  font-weight: bolder;
+  padding: 15px;
+}
+
+tr {
+  text-align: left;
+  margin-bottom: 1px;
+  border: 1px solid var(--borderColor);
+}
+
+tbody tr:hover {
+  cursor: pointer;
+}
+
+td {
+  font-size: 16px;
+}
+
+.history-coin {
+  display: flex;
+  align-items: center;
+  .wrap-img {
+    width: 30px;
+    margin-right: 10px;
+    img { width: 100%; }
+  }
+}

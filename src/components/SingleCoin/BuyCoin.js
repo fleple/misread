@@ -42,12 +42,14 @@ const BuyCoin = (props) => {
         value={countCoin}
         onChange={changeCount}
         placeholder={id}
+        step='any'
       />
       <input
         type='number'
         value={totalPrice}
         onChange={changePrice}
         placeholder='usd'
+        step='any'
       />
       <button type='submit'>Buy {symbol}</button>
     </form>

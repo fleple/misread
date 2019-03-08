@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from '@reach/router';
 
+import getIconBySymbol from '../../helpers/getIconBySymbol';
+
 const UserCoins = (props) => (
   <ul className='user-coins-list'>
   {
@@ -9,7 +11,7 @@ const UserCoins = (props) => (
         <Link to={`/coins/${coin.id}`}>
           <div className='left'>
             <div className='wrap-img'>
-              <img src={`https://static.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`} alt='icon-coin'/>
+              <img src={getIconBySymbol(coin.symbol)} alt='icon-coin'/>
             </div>
             <span className='coin-symbol'>{coin.symbol}</span>
           </div>

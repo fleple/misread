@@ -44,9 +44,14 @@ class Header extends Component {
               <Link to='/coins'>Coins</Link>
             </li>
             { userStore.userData.name ?
-                <li>
-                  <Link to='/profile'>{ userStore.userData.name }</Link>
-                </li> :
+                <>
+                  <li>
+                    <Link to='/profile'>{ userStore.userData.name }</Link>
+                  </li>
+                  <li onClick={userStore.logout}>
+                    <button>Log Out</button>
+                  </li>
+                </> :
                 <li onClick={this.toggleModal}>
                   <button>Sign In</button>
                 </li>

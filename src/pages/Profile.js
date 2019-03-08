@@ -2,11 +2,16 @@ import React from 'react';
 import { observer, inject } from 'mobx-react';
 
 import UserCoins from '../components/Profile/UserCoins';
+import UserHistory from '../components/Profile/UserHistory';
 
 import '../style/profile.scss';
 
 const Profile = (props) => {
   const { userStore, coinsStore } = props;
+
+  if(!userStore.userData.name) {
+    return null;
+  }
 
   let sum = userStore.userData.money;
   for(let i = 0; i < userStore.userData.coins.length; i++) {
@@ -37,7 +42,10 @@ const Profile = (props) => {
         </div>
       </div>
       <div className='user-actions'>
-        <h1>user actions history</h1>
+        <UserHistory
+          buyHistory={userStore.userData.buyHistory}
+          sellHistory={userStore.userData.sellHistory}
+        />
       </div>
     </div>
   )

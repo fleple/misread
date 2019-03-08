@@ -31,19 +31,21 @@ class SingleCoin extends Component {
               price={currentCoin.priceUsd}
               percent={currentCoin.changePercent24Hr}
             />
-            <CoinTrade
-              price={currentCoin.priceUsd}
-              id={currentCoin.id}
-              symbol={currentCoin.symbol}
-              buy={userStore.buyCoins}
-              sell={userStore.sellCoins}
-            />
-            <UserMoney
-              user={userStore.userData}
-              counts={userStore.coinCounts}
-              symbol={currentCoin.symbol}
-              id={currentCoin.id}
-            />
+            {
+              userStore.userData.name ? <><CoinTrade
+                price={currentCoin.priceUsd}
+                id={currentCoin.id}
+                symbol={currentCoin.symbol}
+                buy={userStore.buyCoins}
+                sell={userStore.sellCoins}
+              />
+               <UserMoney
+                user={userStore.userData}
+                counts={userStore.coinCounts}
+                symbol={currentCoin.symbol}
+                id={currentCoin.id}
+              /></> : null
+            }
           </div>
 
           <div className='chart'>

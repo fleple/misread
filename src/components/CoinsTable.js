@@ -2,10 +2,13 @@ import React from 'react';
 import { observer, inject } from 'mobx-react';
 
 import shortPrice from '../helpers/shortPrice';
+import getIconBySymbol from '../helpers/getIconBySymbol';
 import '../style/coins.scss';
 
 const CoinsTable = (props) => {
   const { coinsStore, nav } = props;
+  const { coins } = coinsStore;
+  
   return (
     <table className='price-table'>
       <thead>
@@ -20,23 +23,23 @@ const CoinsTable = (props) => {
       </thead>
       <tbody>
         {
-          Object.keys(coinsStore.coins).map(coin => (
+          Object.keys(coins).map(coin => (
             <tr key={coin} onClick={() => { nav(`/coins/${coin}`)}}>
               <td className='coins-table-rank'>
                 <div className='coin-rank'>
-                  <div className='rank'>#{coinsStore.coins[coin].rank}</div>
+                  <div className='rank'>#{coins[coin].rank}</div>
                   <div className='wrap-img'>
-                    <img src={`https://static.coincap.io/assets/icons/${coinsStore.coins[coin].symbol.toLowerCase()}@2x.png`} alt='icon-coin'/>
+                    <img src={getIconBySymbol(coins[coin].symbol)} alt='icon-coin'/>
                   </div>
                 </div>
               </td>
-              <td>{coinsStore.coins[coin].symbol} {coin}</td>
-              <td>${Number(coinsStore.coins[coin].priceUsd).toFixed(4)}</td>
-              <td className={coinsStore.coins[coin].changePercent24Hr > 0 ? "green" : "red"}>
-                {Number(coinsStore.coins[coin].changePercent24Hr).toFixed(2)}%
+              <td>{coins[coin].symbol} {coin}</td>
+              <td>${Number(coins[coin].priceUsd).toFixed(4)}</td>
+              <td className={coins[coin].changePercent24Hr > 0 ? "green" : "red"}>
+                {Number(coins[coin].changePercent24Hr).toFixed(2)}%
               </td>
-              <td>${shortPrice(coinsStore.coins[coin].marketCapUsd)}</td>
-              <td>${shortPrice(coinsStore.coins[coin].volumeUsd24Hr)}</td>
+              <td>${shortPrice(coins[coin].marketCapUsd)}</td>
+              <td>${shortPrice(coins[coin].volumeUsd24Hr)}</td>
             </tr>
           ))
         }
