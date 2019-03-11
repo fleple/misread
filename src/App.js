@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Router } from '@reach/router';
-import DevTools from 'mobx-react-devtools';
+// import DevTools from 'mobx-react-devtools';
 
 import './style/table.scss';
 
@@ -11,8 +11,6 @@ const Home = React.lazy(() => import('./pages/Home'));
 const About = React.lazy(() => import('./pages/About'));
 const Coins = React.lazy(() => import('./pages/Coins'));
 const SingleCoin = React.lazy(() => import('./pages/SingleCoin'));
-const Stocks = React.lazy(() => import('./pages/Stocks'));
-const SingleStock = React.lazy(() => import('./pages/SingleStock'));
 const Profile = React.lazy(() => import('./pages/Profile'));
 
 const App = () => (
@@ -23,13 +21,11 @@ const App = () => (
         <Home path='/' />
         <Coins path='/coins' />
         <SingleCoin path='/coins/:coin' />
-        <Stocks path='/stocks' />
-        <SingleStock path='/stocks/:symbol' />
         <About path='/about' />
         <Profile path='/profile' />
       </Router>
     </Suspense>
-    <DevTools/>
+    {/* <DevTools/> */}
   </React.Fragment>
 );
 

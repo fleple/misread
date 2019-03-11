@@ -44,18 +44,28 @@
           cursor: pointer;
         }
         .left {
-          width: 60px;
+          width: 80px;
+          text-align: left;
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          .coin-symbol {
+            text-align: left;
+            padding-left: 10px;
+          }
         }
         .wrap-img {
           width: 30px;
+
           img { width: 100%; }
         }
       }
     }
   }
+}
+
+.table-title {
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 .user-total-money {
@@ -113,5 +123,34 @@ td {
     width: 30px;
     margin-right: 10px;
     img { width: 100%; }
+  }
+}
+
+.btns-history {
+  width: 260px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  button {
+    display: block;
+    width: 120px;
+    padding: 10px;
+    border: 1px solid var(--borderColor);
+    color: var(--color);
+    font-size: 1em;
+    background-color: var(--bg);
+    transition: all .2s ease-in-out;
+    border-radius: 4px;
+    font-family: 'Akrobat';
+    &:hover {
+      cursor: pointer;
+      border-color: var(--color);
+    }
+    &:disabled {
+      color: var(--borderColor);
+      border-color: var(--borderColor);
+      cursor: not-allowed;
+    }
   }
 }

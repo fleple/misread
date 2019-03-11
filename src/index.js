@@ -9,17 +9,38 @@ import coinsStore from './stores/coinsStore';
 import userStore from './stores/userStore';
 
 function initState() {
-  coinsStore.fetchCoins()
-    .then(() => coinsStore.startSocket())
-    .then(() => coinsStore.readSocket());
-  
+  if(localStorage.misread) {
+    userStore.initUserFromLocalStorage()
+      .then(() => coinsStore.fetchCoins())
+      .then(() => {
+        const coins = coinsStore.coins;
+        const userCoins = userStore.userData.coins;
+        for(let i = 0; i < userCoins.length; i++) {
+          if(!(userCoins[i].id in coins)) {
+            coinsStore.fetchCoin(userCoins[i].id);
+          }
+        }
+      })
+      .then(() => coinsStore.startSocket())
+      .then(() => coinsStore.readSocket());
+  } else {
+    coinsStore.fetchCoins()
+      .then(() => coinsStore.startSocket())
+      .then(() => coinsStore.readSocket());
+  }
+
+  // if(localStorage.misread) {
+  //   userStore.initUserFromLocalStorage();
+  // }
+
+  // coinsStore.fetchCoins()
+  //   .then(() => coinsStore.startSocket())
+  //   .then(() => coinsStore.readSocket());
+
   setInterval(() => {
     coinsStore.refreshData();
-  },10000);
+  }, 50000);
 
-  if(localStorage.misread) {
-    userStore.initUserFromLocalStorage();
-  }
 }
 
 

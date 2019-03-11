@@ -9,15 +9,26 @@ import ButtonsHistory from '../components/SingleCoin/ButtonsHistory';
 import UserMoney from '../components/SingleCoin/UserMoney';
 
 class SingleCoin extends Component {
+  state = {
+    chartOn: false
+  };
+
   componentDidMount() {
     const currentCoin = this.props.uri.split('/')[2];
     this.props.coinsStore.fetchHistory(currentCoin, 'd', 'h1')
+      .then(() => this.setState({ chartOn: true }));
+  }
+
+  getHistory = (id, flag, step) => {
+    this.setState({ chartOn: false });
+    this.props.coinsStore.fetchHistory(id, flag, step)
+      .then(() => this.setState({ chartOn: true  }));
   }
 
   render() {
     const { coinsStore, userStore, uri } = this.props;
     const currentId = uri.split('/')[2];
-    const currentCoin = coinsStore.getCoin(currentId); 
+    const currentCoin = coinsStore.getCoin(currentId);
     if(currentCoin) {
       return (
         <div className='single-coin-page'>
@@ -32,24 +43,26 @@ class SingleCoin extends Component {
               percent={currentCoin.changePercent24Hr}
             />
             {
-              userStore.userData.name ? <><CoinTrade
-                price={currentCoin.priceUsd}
-                id={currentCoin.id}
-                symbol={currentCoin.symbol}
-                buy={userStore.buyCoins}
-                sell={userStore.sellCoins}
-              />
-               <UserMoney
-                user={userStore.userData}
-                counts={userStore.coinCounts}
-                symbol={currentCoin.symbol}
-                id={currentCoin.id}
-              /></> : null
+              userStore.userData.name ? <>
+                <CoinTrade
+                  price={currentCoin.priceUsd}
+                  id={currentCoin.id}
+                  symbol={currentCoin.symbol}
+                  buy={userStore.buyCoins}
+                  sell={userStore.sellCoins}
+                />
+                <UserMoney
+                  user={userStore.userData}
+                  counts={userStore.coinCounts}
+                  symbol={currentCoin.symbol}
+                  id={currentCoin.id}
+                />
+              </> : null
             }
           </div>
 
           <div className='chart'>
-            { coinsStore.history.coinId === currentId ?
+            { this.state.chartOn ?
                 <CoinChart
                   coinId={currentId}
                   dataHistory={coinsStore.history}
@@ -60,7 +73,7 @@ class SingleCoin extends Component {
 
           <ButtonsHistory
             coinId={currentId}
-            getHistory={coinsStore.fetchHistory}
+            getHistory={this.getHistory}
           />
         </div>
       );

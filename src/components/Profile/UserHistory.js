@@ -8,12 +8,18 @@ const UserHistory = (props) => {
     <div className='user-history'>
       {
         buyHistory.length && <div className='user-history-buy'>
-         <TableHistory data={buyHistory}/> 
+         <TableHistory
+          data={buyHistory}
+          header='Buy Coins History'
+        /> 
         </div>
       }
       {
         sellHistory.length && <div className='user-history-sell'>
-          <TableHistory data={sellHistory}/>
+          <TableHistory
+            data={sellHistory}
+            header='Sell Coins History'
+          />
         </div>
       }
     </div>

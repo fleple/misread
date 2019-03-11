@@ -20,6 +20,10 @@ class Coins {
     }
   }
 
+  setSingleCoinData = data => {
+    this.coins[ data.id ] = data;
+  }
+
   setOffset = offset => this.offset += offset;
 
   changeCoinsPrices = (newPrices) => {
@@ -57,10 +61,12 @@ class Coins {
     }
 
     for(let id in this.coins) {
-      this.coins[id].rank = dataObj[id].rank;
-      this.coins[id].marketCapUsd = dataObj[id].marketCapUsd;
-      this.coins[id].volumeUsd24Hr = dataObj[id].volumeUsd24Hr;
-      this.coins[id].changePercent24Hr = dataObj[id].changePercent24Hr;
+      if(dataObj[id]) {
+        this.coins[id].rank = dataObj[id].rank;
+        this.coins[id].marketCapUsd = dataObj[id].marketCapUsd;
+        this.coins[id].volumeUsd24Hr = dataObj[id].volumeUsd24Hr;
+        this.coins[id].changePercent24Hr = dataObj[id].changePercent24Hr;
+      }
     }
   }
 
@@ -70,6 +76,15 @@ class Coins {
       .then(json => {
         this.setCoinsData(json.data);
         this.setOffset(this.step)
+      });
+  }
+
+  fetchCoin = (symbol) => {
+    return fetch(`https://api.coincap.io/v2/assets/${symbol}`)
+      .then(res => res.json())
+      .then(json => {
+        this.setSingleCoinData(json.data);
+        this.setOffset(1);
       });
   }
 
@@ -121,7 +136,7 @@ class Coins {
 
   startSocket = () => {
     const coinKeys = Object.keys(this.coins);
-    const coinsList = coinKeys.length <= 60 ? coinKeys.join(',') : 'ALL';
+    const coinsList = coinKeys.length <= 40 ? coinKeys.join(',') : 'ALL';
     this.socket = new WebSocket(`wss://ws.coincap.io/prices?assets=${coinsList}`);
     // this.socket.onclose = () => setTimeout(() => {this.startSocket()}, 5000);
     this.socket.onclose = (evt) => {
@@ -154,7 +169,8 @@ decorate(Coins, {
   setOffset: action,
   changeCoinsPrices: action,
   setHistory: action,
-  setRefreshedData: action
+  setRefreshedData: action,
+  setSingleCoinData: action
 });
 
 export default new Coins();

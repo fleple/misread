@@ -49,18 +49,16 @@ class User {
   }
 
   initUserFromLocalStorage = () => {
-    if(localStorage.misread) {
-      fetch('/api/auth', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ token: localStorage.misread })
-      })
-      .then(res => res.json())
-      .then(json => this.setUserData(json.user));
-    }
+    return fetch('/api/auth', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ token: localStorage.misread })
+    })
+    .then(res => res.json())
+    .then(json => this.setUserData(json.user));
   }
 
   logout = () => {

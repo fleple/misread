@@ -6,7 +6,7 @@ const Modal = (props) => {
     <div className='modal'>
       <button className='form-close' onClick={props.close}>close</button>
       {props.children}
-    </div>, document.getElementById('portal')
+    </div>, document.getElementById('modal-sign')
   );
 }
 
