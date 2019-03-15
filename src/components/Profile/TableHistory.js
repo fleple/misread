@@ -31,33 +31,38 @@ const TableHistory = (props) => {
   return (
     <>
       <h1 className='table-title'>{props.header}</h1>
-      <table className='table-history'>
-        <thead>
-          <tr>
-            <th>coin</th>
-            <th>price</th>
-            <th>amount</th>
-            <th>date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            dataHistory[currentPage].map(item => (
-              <tr key={item._id}>
-                <td className='history-coin'>
-                  <div className='wrap-img'>
-                    <img src={getIconBySymbol(item.symbol)} alt='icon-coin'/>
-                  </div>
-                  {item.symbol}
-                </td>
-                <td>${item.price.toFixed(4)}</td>
-                <td>{item.amount}</td>
-                <td>{new Date(+item.date).toLocaleString()}</td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
+      <div className='table-history-wrap'>
+        <table className='table-history'>
+          <thead>
+            <tr>
+              <th>coin</th>
+              <th>price</th>
+              <th>amount</th>
+              <th>date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              dataHistory[currentPage].map(item => (
+                <tr key={item._id}>
+                  <td className='history-coin'>
+                    <div className='wrap-img'>
+                      <img src={getIconBySymbol(item.symbol)} alt='icon-coin'/>
+                    </div>
+                    {item.symbol}
+                  </td>
+                  <td>${item.price.toFixed(4)}</td>
+                  <td>{item.amount}</td>
+                  <td>
+                    <span className='history-time'>{new Date(+item.date).toLocaleTimeString()} </span>
+                    <span> {new Date(+item.date).toLocaleDateString()}</span>
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
       { historyLength > 1 &&
         <div className='btns-history'>
           <button

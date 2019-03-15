@@ -22,6 +22,7 @@ class User {
     this.error[type] = error.message;
   }
 
+  // actions
   signIn = submittedData => {
     console.log('submittedData', submittedData);
     fetch('/api/signIn', {

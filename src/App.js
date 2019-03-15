@@ -8,7 +8,6 @@ import Header from './ui/Header';
 import LoadingPage from './ui/LoadingPage';
 
 const Home = React.lazy(() => import('./pages/Home'));
-const About = React.lazy(() => import('./pages/About'));
 const Coins = React.lazy(() => import('./pages/Coins'));
 const SingleCoin = React.lazy(() => import('./pages/SingleCoin'));
 const Profile = React.lazy(() => import('./pages/Profile'));
@@ -21,7 +20,6 @@ const App = () => (
         <Home path='/' />
         <Coins path='/coins' />
         <SingleCoin path='/coins/:coin' />
-        <About path='/about' />
         <Profile path='/profile' />
       </Router>
     </Suspense>

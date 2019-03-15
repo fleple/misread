@@ -24,10 +24,15 @@ const CoinChart = ({ coinId, dataHistory }) => {
       data={currentData}
       options={{
         ticks: {
-          fontSize: 15,
+          fontSize: 14,
           beginAtZero: true,
           stepSize: 1
         },
+        // layout: {
+        //   padding: {
+        //     left: 10
+        //   }
+        // },
         maintainAspectRatio: false,
         legend: {
           display: false

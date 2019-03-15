@@ -1,21 +1,26 @@
 .profile {
   width: 90%;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: var(--regularOffset);
   display: flex;
   justify-content: space-between;
+
 }
 
 .sidebar {
-  width: 250px;
+  width: 20%;
+}
+
+.user-actions {
+  width: 70%;
 }
 
 .user-cash {
   border: 1px solid var(--borderColor);
   padding: 10px;
   text-align: center;
-  border-radius: 4px;
-  margin-bottom: 20px;
+  border-radius: var(--borderRadius);
+  margin-bottom: var(--regularOffset);
   hr {
     height: 1px;
     border: none;
@@ -25,8 +30,8 @@
 
 .user-coins {
   border: 1px solid var(--borderColor);
-  border-radius: 4px;
-  margin-bottom: 20px;
+  border-radius: var(--borderRadius);
+  margin-bottom: var(--regularOffset);
   .user-coins-list {
     li {
       border-bottom: 1px solid var(--borderColor);
@@ -55,7 +60,6 @@
         }
         .wrap-img {
           width: 30px;
-
           img { width: 100%; }
         }
       }
@@ -66,12 +70,13 @@
 .table-title {
   text-align: center;
   margin-bottom: 15px;
+  font-size: 1.8em;
 }
 
 .user-total-money {
   padding: 10px;
   border: 1px solid var(--borderColor);
-  border-radius: 4px;
+  border-radius: var(--borderRadius);
   text-align: center;
   hr {
     height: 1px;
@@ -80,8 +85,12 @@
   }
 }
 
+.table-history-wrap {
+  min-height: 370px;
+}
+
 .table-history {
-  width: 800px;
+  width: 100%;
   margin-bottom: 20px;
   table-layout: fixed;
   border-collapse: collapse;
@@ -93,7 +102,7 @@ thead {
   color: var(--color);
   background-color: var(--theadBg);
   font-weight: bolder;
-  font-size: 14px;
+  font-size: 0.9em;
 }
 
 td, th {
@@ -108,12 +117,8 @@ tr {
   border: 1px solid var(--borderColor);
 }
 
-tbody tr:hover {
-  cursor: pointer;
-}
-
 td {
-  font-size: 16px;
+  font-size: 1em;
 }
 
 .history-coin {
@@ -129,7 +134,8 @@ td {
 .btns-history {
   width: 260px;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-bottom: --var(--borderRadius);
   display: flex;
   justify-content: space-between;
   button {
@@ -140,8 +146,8 @@ td {
     color: var(--color);
     font-size: 1em;
     background-color: var(--bg);
-    transition: all .2s ease-in-out;
-    border-radius: 4px;
+    transition: var(--trans);
+    border-radius: var(--borderRadius);
     font-family: 'Akrobat';
     &:hover {
       cursor: pointer;
@@ -152,5 +158,62 @@ td {
       border-color: var(--borderColor);
       cursor: not-allowed;
     }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .profile {
+    width: 95%;
+  }
+  .sidebar {
+    width: 25%;
+  }
+
+  .table-history-wrap {
+    min-height: 380px;
+  }
+}
+
+
+@media all and (max-width: 500px) {
+  .profile {
+    width: 100%;
+    margin-top: 0;
+    flex-wrap: wrap;
+  }
+
+  .history-time {
+    display: none;
+  }
+
+  .sidebar {
+    width: 100%;
+    .user-cash,
+    .user-coins,
+    .user-total-money {
+      border-radius: 0;
+      margin-top: 10px;
+      border: none;
+      border-top: 1px solid var(--borderColor);
+      border-bottom: 1px solid var(--borderColor);
+    }
+  }
+
+  // .user-cash,
+  // .user-coins,
+  // .user-total-money {
+  //   margin-bottom: 0;
+  //   margin-top: 0;
+  // }
+
+  .user-actions {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media all and (max-width: 360px) {
+  .table-history-wrap {
+    min-height: 330px;
   }
 }

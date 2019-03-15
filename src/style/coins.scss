@@ -1,5 +1,5 @@
 .coins-table-rank {
-  width: 7.5%;
+  width: 50px;
   .coin-rank {
     display: flex;
     align-items: center;
@@ -16,7 +16,7 @@
 .more-coins-btn {
   padding: 15px 20px;
   display: block;
-  font-size: 16px;
+  font-size: 1em;
   margin: 0 auto;
   margin-top: 20px;
   color: var(--color);
@@ -26,27 +26,12 @@
   transition: all .3s ease-in-out;
   &:hover {
     cursor: pointer;
-    color: var(--bg);
-    background: var(--color);
+    border-color: var(--color);
   }
 }
 
-.search-coin {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  input {
-    display: block;
-    padding: 6px 5px;
-    width: 250px;
-    font-size: 14px;
-    border: 1px solid var(--borderColor);
-    border-radius: 4px;
-    background-color: var(--bg);
-    color: var(--color);
-    transition: all .3s ease-in-out;
-    &:focus {
-      border-color: var(--color);
-    }
+@media all and (max-width: 400px) {
+  .coins-table-rank {
+    width: 20px;
   }
 }

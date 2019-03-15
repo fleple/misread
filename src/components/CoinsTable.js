@@ -33,7 +33,10 @@ const CoinsTable = (props) => {
                   </div>
                 </div>
               </td>
-              <td>{coins[coin].symbol} {coin}</td>
+              <td>
+                <span className='table-coin-symbol'>{coins[coin].symbol} </span>
+                <span className='table-coin-id'>{coin}</span>
+              </td>
               <td>${Number(coins[coin].priceUsd).toFixed(4)}</td>
               <td className={coins[coin].changePercent24Hr > 0 ? "green" : "red"}>
                 {Number(coins[coin].changePercent24Hr).toFixed(2)}%

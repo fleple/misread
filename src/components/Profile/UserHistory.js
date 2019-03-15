@@ -15,12 +15,12 @@ const UserHistory = (props) => {
         </div>
       }
       {
-        sellHistory.length && <div className='user-history-sell'>
+        sellHistory.length > 0? <div className='user-history-sell'>
           <TableHistory
             data={sellHistory}
             header='Sell Coins History'
           />
-        </div>
+        </div> : null
       }
     </div>
   )

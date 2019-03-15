@@ -7,6 +7,9 @@ import SignIn from './SignIn';
 import LogIn from './LogIn';
 
 import '../style/header.scss';
+import nightIcon from '../assets/night.png';
+import logoutIcon from '../assets/logout.png'
+
 
 import switchTheme from '../helpers/switchTheme';
 
@@ -35,10 +38,7 @@ class Header extends Component {
         <nav>
           <ul className='header-list'>
             <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/about'>About</Link>
+              <Link to='/'>Pepele</Link>
             </li>
             <li>
               <Link to='/coins'>Coins</Link>
@@ -48,9 +48,6 @@ class Header extends Component {
                   <li>
                     <Link to='/profile'>{ userStore.userData.name }</Link>
                   </li>
-                  <li onClick={userStore.logout}>
-                    <button>Log Out</button>
-                  </li>
                 </> :
                 <li onClick={this.toggleModal}>
                   <button>Sign In</button>
@@ -59,7 +56,15 @@ class Header extends Component {
           </ul>
         </nav>
         <div className='nav-right'>
-          <button className='theme-switcher' onClick={switchTheme}>switch</button>
+          {
+            userStore.userData.name &&
+            <button className='user-logout' onClick={userStore.logout}>
+              <img src={logoutIcon} alt='logout'/>
+            </button>
+          }
+          <button className='theme-switcher' onClick={switchTheme}>
+            <img src={nightIcon} alt='switch'/>
+          </button>
         </div>
         { isOpened && (
           <Modal close={this.toggleModal}>

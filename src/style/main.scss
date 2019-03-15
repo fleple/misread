@@ -5,13 +5,20 @@ html, body, ul, li, a, header, nav, h1, h2, h3, h4, h5, h6, input, button, p, bu
   outline: none;
 }
 
-//initial theme light
-// :root {
-//   --bg: rgb(243,243,243);
-//   --color: rgb(30,30,30);
-//   --borderColor: #ccc;
-//   --theadBg: #ccc;
-// }
+@mixin btn {
+  display: block;
+  padding: 10px;
+  border-radius: var(--borderRadius);
+  border: 1px solid var(--borderColor);
+  background-color: var(--bg);
+  font-size: 1em;
+  color: var(--color);
+  transition: var(--trans);
+  &:hover {
+    cursor: pointer;
+    border: 1px solid var(--color);
+  }
+}
 
 //initial theme dark
 :root {
@@ -19,13 +26,27 @@ html, body, ul, li, a, header, nav, h1, h2, h3, h4, h5, h6, input, button, p, bu
   --color: rgb(243,243,243);
   --borderColor: rgba(255, 255, 255, 0.2);
   --theadBg: rgba(255, 255, 255, 0.2);
+  --switcher: #eee;
+
+  --borderRadius: 4px;
+  --regularOffset: 20px;
+  --trans: all .2s ease-in-out;
+}
+
+@font-face {
+  font-family: 'Akrobat';
+  src: url('../font/Akrobat-Regular.otf');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
 }
 
 body {
   background-color: var(--bg);
   color: var(--color);
-  margin-bottom: 20px;
+  margin-bottom: var(--regularOffset);
   font-family: 'Akrobat';
+  font-size: 16px;
 }
 
 ul {
@@ -39,18 +60,17 @@ a {
 .modal {
   position: fixed;
   width: 40%;
-  height: 400px;
   top: 20%;
   left: 30%;
   background-color: var(--bg);
   color: var(--color);
   border: 1px solid var(--borderColor);
-  padding: 20px;
-  box-sizing: border-box;
+  padding: var(--regularOffset);
+  padding-bottom: 40px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  border-radius: 4px;
+  border-radius: var(--borderRadius);
   box-shadow: 0px 0px 15px var(--borderColor);
 }
 
@@ -63,7 +83,7 @@ a {
 
 .title {
   text-align: center;
-  padding-bottom: 20px;
+  padding-bottom: var(--regularOffset);
 }
 
 .form-input {
@@ -71,11 +91,11 @@ a {
   border: 1px solid var(--borderColor);
   background-color: var(--bg);
   color: var(--color);
-  margin-bottom: 20px;
+  margin-bottom: var(--regularOffset);
   padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  transition: all .2s ease-in-out;
+  font-size: 1em;
+  border-radius: var(--borderRadius);
+  transition: var(--trans);
   &:focus,&:hover {
     cursor: pointer;
     border: 1px solid var(--color);
@@ -83,18 +103,7 @@ a {
 }
 
 .form-btn {
-  display: block;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  background-color: var(--bg);
-  color: var(--color);
-  border: 1px solid var(--borderColor);
-  transition: all .2s ease-in-out;
-  &:hover {
-    cursor: pointer;
-    border: 1px solid var(--color);
-  }
+  @include btn;
 }
 
 .form-close {
@@ -104,8 +113,8 @@ a {
   color: var(--borderColor);
   background-color: var(--bg);
   border: none;
-  font-size: 14px;
-  transition: all .2s ease-in-out;
+  font-size: 0.9em;
+  transition: var(--trans);
   &:hover {
     cursor: pointer;
     color: var(--color);
@@ -117,8 +126,8 @@ a {
   display: flex;
   width: 50%;
   justify-content: space-between;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin-top: var(--regularOffset);
+  margin-bottom: var(--regularOffset);
   .form-choose-btn:first-child {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
@@ -133,15 +142,53 @@ a {
 .form-choose-btn {
   display: block;
   padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
+  font-size: 1em;
+  border-radius: var(--borderRadius);
   width: 50%;
   background-color: var(--bg);
   color: var(--color);
   border: 1px solid var(--borderColor);
-  transition: all .2s ease-in-out;
-  &:hover {
+  transition: var(--trans);
+  &:hover, &:focus {
+    background-color: var(--bg);
     cursor: pointer;
     border: 1px solid var(--color);
+  }
+}
+
+
+@media all and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .form,
+  .form-choose {
+    width: 100%;
+  }
+}
+
+// @media all and (max-width: 700px) {
+//   body {
+//     font-size: 14px;
+//   }
+// }
+
+@media all and (max-width: 500px) {
+  :root {
+    --regularOffset: 10px;
+  }
+
+  .modal {
+    width: 70%;
+    left: 15%;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .modal {
+    width: 100%;
+    left: 0;
+    top: 0;
   }
 }

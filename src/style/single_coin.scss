@@ -6,7 +6,6 @@
 
 .single-coin-top {
   display: flex;
-  // width: 70%; 
   justify-content: space-between;
 }
 
@@ -20,19 +19,19 @@
   display: flex;
   flex-direction: column;
   border: 1px solid var(--borderColor);
-  padding: 20px;
-  border-radius: 4px;
+  padding: var(--regularOffset);
+  border-radius: var(--borderRadius);
   width: 41%;
   input {
     display: block;
     border: 1px solid var(--borderColor);
     background-color: var(--bg);
     color: var(--color);
-    margin-bottom: 20px;
+    margin-bottom: var(--regularOffset);
     padding: 10px;
-    font-size: 16px;
+    font-size: 1em;
     border-radius: 4px;
-    transition: all .2s ease-in-out;
+    transition: var(--trans);
     width: 100%;
     &:focus,&:hover {
       cursor: pointer;
@@ -42,12 +41,12 @@
   button {
     display: block;
     padding: 10px;
-    font-size: 16px;
+    font-size: 1em;
     border-radius: 4px;
     background-color: var(--bg);
     color: var(--color);
     border: 1px solid var(--borderColor);
-    transition: all .2s ease-in-out;
+    transition: var(--trans);
     &:hover {
       cursor: pointer;
       border: 1px solid var(--color);
@@ -57,15 +56,15 @@
 
 .coin-info {
   border: 1px solid var(--borderColor);
-  padding: 20px;
+  padding: var(--regularOffset);
   width: 20%;
   text-align: center;
-  border-radius: 4px;
+  border-radius: var(--trans);
   hr {
     border: none;
     background-color: var(--borderColor);
     height: 2px;
-    margin-bottom: 20px;
+    margin-bottom: var(--regularOffset);
   }
 
   .info-head {
@@ -84,15 +83,15 @@
 
 .user-money {
   border: 1px solid var(--borderColor);
-  padding: 20px;
+  padding: var(--regularOffset);
   width: 20%;
-  border-radius: 4px;
+  border-radius: var(--borderRadius);
   text-align: center;
   hr {
     border: none;
     background-color: var(--borderColor);
     height: 2px;
-    margin-bottom: 20px;
+    margin-bottom: var(--regularOffset);
   }
   p {
     font-size: 1.4em;
@@ -108,22 +107,101 @@
 .buttons-history {
   width: 500px;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: var(--regularOffset);
   display: flex;
   justify-content: space-between;
   button {
-    font-size: 14px;
+    font-size: 0.9em;
     padding: 10px;
     width: 19%;
     border: 1px solid var(--borderColor);
     color: var(--color);
     background-color: var(--bg);
-    border-radius: 4px;
-    transition: all .3s ease-in-out;
+    border-radius: var(--borderRadius);
+    transition: var(--trans);
     &:hover {
       cursor: pointer;
-      color: var(--bg);
-      background-color: var(--color);
+      border: 1px solid var(--color);
     }
   }
+}
+
+@media all and (max-width: 768px) {
+  .single-coin-page {
+    width: 100%;
+  }
+
+  .single-coin-top {
+    flex-wrap: wrap;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .chart {
+    height: 350px;
+  }
+
+  .coin-info,
+  .user-money {
+    width: 41%;
+    margin-bottom: 20px;
+  }
+
+  .coin-trade {
+    order: 1;
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .single-coin-page {
+    margin-top: 0;
+  }
+
+  .single-coin-top {
+    width: 100%;
+  }
+
+  .coin-info,
+  .user-money {
+    width: 42%;
+    margin-bottom: 0;
+    border: none;
+  }
+
+  .user-money {
+    h2 {
+      padding-bottom: 7px;
+    }
+  }
+
+  .coin-info {
+    .info-head {
+      justify-content: center;
+      align-items: center;
+    }
+    .wrap-img {
+      width: 25px;
+    }
+  }
+
+  .coin-trade {
+    width: 100%;
+    .coin-trade-form {
+      width: 44%;
+      border: none;
+    }
+  }
+
+  .chart {
+    height: 250px;
+  }
+
+  .buttons-history {
+    width: 95%;
+    button {
+      width: 19%;
+    }
+  }
+
 }

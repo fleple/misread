@@ -70,6 +70,7 @@ class Coins {
     }
   }
 
+  // actions
   fetchCoins = () => {
     return fetch(`https://api.coincap.io/v2/assets?limit=${this.step}&offset=${this.offset}`)
       .then(res => res.json())
@@ -79,13 +80,13 @@ class Coins {
       });
   }
 
-  fetchCoin = (symbol) => {
-    return fetch(`https://api.coincap.io/v2/assets/${symbol}`)
-      .then(res => res.json())
-      .then(json => {
-        this.setSingleCoinData(json.data);
-        this.setOffset(1);
-      });
+  fetchCoin = (id) => {
+    if(!this.coins[id])
+      return fetch(`https://api.coincap.io/v2/assets/${id}`)
+        .then(res => res.json())
+        .then(json => {
+          this.setSingleCoinData(json.data);
+        });
   }
 
   fetchHistory = (coinId, flag, interval) => {

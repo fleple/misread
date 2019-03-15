@@ -11,13 +11,11 @@
 thead {
   color: var(--color);
   background-color: var(--theadBg);
-  font-weight: bolder;
-  font-size: 14px;
+  font-size: 0.9em;
 }
 
 td, th {
   color: var(--color);
-  font-weight: bolder;
   padding: 15px;
 }
 
@@ -32,7 +30,7 @@ tbody tr:hover {
 }
 
 td {
-  font-size: 16px;
+  font-size: 1em;
 }
 
 .green {
@@ -41,4 +39,29 @@ td {
 
 .red {
   color: rgba(200, 20, 20, 0.8);
+}
+
+@media all and (max-width: 768px) {
+  .price-table {
+    width: 100%;
+    margin-top: 0;
+  }
+  tr {
+    border: none;
+    border-bottom: 1px solid var(--borderColor);
+  }
+}
+@media all and (max-width: 500px) {
+  .table-coin-id {
+    display: none;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .table-coin-id, .rank {
+    display: none;
+  }
+  td, th {
+    padding: 15px 5px;
+  }
 }
