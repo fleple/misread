@@ -5,6 +5,10 @@ html, body, ul, li, a, header, nav, h1, h2, h3, h4, h5, h6, input, button, p, bu
   outline: none;
 }
 
+html,body, #root {
+  width: 100%;
+}
+
 @mixin btn {
   display: block;
   padding: 10px;

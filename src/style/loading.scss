@@ -1,0 +1,26 @@
+.loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 8px solid rgb(30, 130, 30);
+  border-right-color: transparent;
+  animation: spin-right 0.5s ease-in-out infinite;
+}
+
+@keyframes spin-right {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

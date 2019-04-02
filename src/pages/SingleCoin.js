@@ -8,6 +8,8 @@ import CoinChart from '../components/SingleCoin/CoinChart';
 import ButtonsHistory from '../components/SingleCoin/ButtonsHistory';
 import UserMoney from '../components/SingleCoin/UserMoney';
 
+import Loading from '../components/Loading';
+
 class SingleCoin extends Component {
   state = {
     chartOn: false
@@ -67,10 +69,10 @@ class SingleCoin extends Component {
                   coinId={currentId}
                   dataHistory={coinsStore.history}
                 /> :
-                <h1>Loading...</h1>
+                <Loading/>
             }
           </div>
-
+          
           <ButtonsHistory
             coinId={currentId}
             getHistory={this.getHistory}
