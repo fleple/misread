@@ -6,6 +6,7 @@ import './style/table.scss';
 
 import Header from './ui/Header';
 import LoadingPage from './ui/LoadingPage';
+import Footer from './ui/Footer';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const Coins = React.lazy(() => import('./pages/Coins'));
@@ -23,6 +24,7 @@ const App = () => (
         <Profile path='/profile' />
       </Router>
     </Suspense>
+    <Footer/>
     {/* <DevTools/> */}
   </React.Fragment>
 );

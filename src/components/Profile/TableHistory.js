@@ -38,6 +38,7 @@ const TableHistory = (props) => {
               <th>coin</th>
               <th>price</th>
               <th>amount</th>
+              <th>total price</th>
               <th>date</th>
             </tr>
           </thead>
@@ -53,6 +54,7 @@ const TableHistory = (props) => {
                   </td>
                   <td>${item.price.toFixed(4)}</td>
                   <td>{item.amount}</td>
+                  <td>${(item.amount * item.price).toFixed(4)}</td>
                   <td>
                     <span className='history-time'>{new Date(+item.date).toLocaleTimeString()} </span>
                     <span> {new Date(+item.date).toLocaleDateString()}</span>

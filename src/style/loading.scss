@@ -13,7 +13,7 @@
   border-radius: 50%;
   border: 8px solid rgb(30, 130, 30);
   border-right-color: transparent;
-  animation: spin-right 0.5s ease-in-out infinite;
+  animation: spin-right 0.7s linear infinite;
 }
 
 @keyframes spin-right {

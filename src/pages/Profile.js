@@ -32,7 +32,10 @@ const Profile = (props) => {
         {
           userStore.userData.coins.length &&
           <div className='user-coins'>
-            <UserCoins coins={userStore.userData.coins}/>
+            <UserCoins
+              userCoins={userStore.userData.coins}
+              coins={coinsStore.coins}
+            />
           </div>
         }
         <div className='user-total-money'>
