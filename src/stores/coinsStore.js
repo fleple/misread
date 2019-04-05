@@ -116,9 +116,11 @@ class Coins {
       .then(res => res.json())
       .then(json => {
         const data = json.data;
-        data.flag = flag;
-        data.coinId = coinId;
-        this.setHistory(data);
+        if(data) {
+          data.flag = flag;
+          data.coinId = coinId;
+          this.setHistory(data);
+        }
       });
   }
 

@@ -16,32 +16,32 @@ import guns from '../assets/guns.png';
 const rules = [
   {
     title: "Don't be pathetic",
-    text: "If u lost a lot of money, money are not real, please just try again",
+    text: "Lost a lot of money? They arn't real, try again",
     imgSrc: panic
   },
   {
-    title: "Don't believe everything that you breathe",
+    title: "Don't believe",
     text: "Just enjoy and have fun. Things are not matter",
     imgSrc: pyramid
   },
   {
     title: "Move your money",
-    text: "Buy and sell, sell and buy. Do not store fiat too much",
+    text: "Buy and sell. Do not store in fiat",
     imgSrc: jude
   },
   {
     title: "Don't be foolish",
-    text: "Buy red, sell green. Improvise",
+    text: "Buy red, sell green, improvise",
     imgSrc: stupid
   },
   {
     title: "Uaghh!",
-    text: "get a lot? don't stop",
+    text: "Get a lot? Don't stop",
     imgSrc: success
   },
   {
     title: "State doesn't matter",
-    text: "Load up on guns, bring your friends. It's fun to lose and to pretend",
+    text: "Load up on guns, bring your friends",
     imgSrc: guns
   },
 ];
@@ -62,7 +62,7 @@ const Home = () => {
           </p>
           <br/>
           <h2>Make your pepe reach and happy</h2>
-          <h2>Осмысли ета</h2>
+          <h2>Асмысли ета</h2>
         </div>
       </div>
 

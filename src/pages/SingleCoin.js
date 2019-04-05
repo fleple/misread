@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import { Redirect } from '@reach/router';
+
 import '../style/single_coin.scss';
 
 import CoinInfo from '../components/SingleCoin/CoinInfo';
@@ -9,6 +11,7 @@ import ButtonsHistory from '../components/SingleCoin/ButtonsHistory';
 import UserMoney from '../components/SingleCoin/UserMoney';
 
 import Loading from '../ui/Loading';
+
 
 class SingleCoin extends Component {
   state = {
@@ -80,7 +83,7 @@ class SingleCoin extends Component {
         </div>
       );
     } else {
-      return <h1>No info</h1>
+      return <Redirect from="/" to="not found"/>
     }
   }
 }

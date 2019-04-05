@@ -1,6 +1,8 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 
+import '../style/modal.scss';
+
 const Modal = (props) => {
   return createPortal(
     <div className='modal'>

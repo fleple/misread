@@ -1,0 +1,22 @@
+.container-404 {
+  width: 90%;
+  margin: 0 auto;
+  height: 100%;
+  .wrap-img {
+    width: 300px;
+    margin: 0 auto;
+    img {
+      width: 100%;
+    }
+  }
+
+  .title {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 2.4em;
+    .no-404 {
+      font-size: 3em;
+    }
+  }
+}

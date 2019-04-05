@@ -11,6 +11,11 @@
   padding: 10px;
   justify-content: space-around;
   margin-bottom: 20px;
+  hr {
+    height: 1px;
+    border: none;
+    background-color: var(--borderColor);
+  }
   .wrap-img {
     width: 350px;
     img {
@@ -19,7 +24,6 @@
   }
   .wrap-text {
     h1 {
-      border-bottom: 1px solid var(--borderColor);
       font-size: 2.6em;
     }
     h2 {
@@ -34,15 +38,20 @@
 
 .rules {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   .rule-cart {
-    width: 300px;
+    width: 320px;
     padding: 10px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     border-radius: 4px;
+    text-align: center;
     border: 1px solid var(--borderColor);
+    hr {
+      height: 1px;
+      border: none;
+      background-color: var(--borderColor);
+    }
     .wrap-img {
       width: 280px;
       height: 280px;
@@ -50,6 +59,12 @@
       img {
         width: 100%;
       }
+    }
+    h3 {
+      font-size: 1.7em;
+    }
+    p {
+      font-size: 1.1em;
     }
   }
 }

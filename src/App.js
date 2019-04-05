@@ -7,6 +7,7 @@ import './style/table.scss';
 import Header from './ui/Header';
 import LoadingPage from './ui/LoadingPage';
 import Footer from './ui/Footer';
+import NotFound from './pages/NotFound';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const Coins = React.lazy(() => import('./pages/Coins'));
@@ -18,6 +19,7 @@ const App = () => (
     <Header/>
     <Suspense fallback={<LoadingPage/>}>
       <Router primary={false}>
+        <NotFound default />
         <Home path='/' />
         <Coins path='/coins' />
         <SingleCoin path='/coins/:coin' />

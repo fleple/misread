@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
+import { Redirect } from '@reach/router';
 
 import UserCoins from '../components/Profile/UserCoins';
 import UserHistory from '../components/Profile/UserHistory';
@@ -10,7 +11,7 @@ const Profile = (props) => {
   const { userStore, coinsStore } = props;
 
   if(!userStore.userData.name) {
-    return null;
+    return <Redirect from="/" to="not found"/>;
   }
 
   let sum = userStore.userData.money;
