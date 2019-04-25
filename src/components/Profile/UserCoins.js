@@ -16,8 +16,8 @@ const UserCoins = ({ userCoins, coins }) => (
               <span className='coin-symbol'>{coin.symbol}</span>
             </div>
             <div className='right'>
-              <span className='coin-count'>{coin.count}</span>
-              {coins[coin.id] && <span>${ Number(coins[coin.id].priceUsd).toFixed(2) }</span>}
+              <span className='coin-count'>{ Number(coin.count).toFixed(3) }</span>
+              {coins[coin.id] && <span>${ Number(coins[coin.id].priceUsd).toFixed(3) }</span>}
             </div>
           </Link>
         </li>

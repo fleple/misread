@@ -141,7 +141,6 @@ class Coins {
     const coinKeys = Object.keys(this.coins);
     const coinsList = coinKeys.length <= 40 ? coinKeys.join(',') : 'ALL';
     this.socket = new WebSocket(`wss://ws.coincap.io/prices?assets=${coinsList}`);
-    // this.socket.onclose = () => setTimeout(() => {this.startSocket()}, 5000);
     this.socket.onclose = (evt) => {
       console.log('socket is closed', evt);
       setTimeout(() => {

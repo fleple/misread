@@ -50,7 +50,7 @@ const TableHistory = (props) => {
                     <div className='wrap-img'>
                       <img src={getIconBySymbol(item.symbol)} alt='icon-coin'/>
                     </div>
-                    {item.symbol}
+                    <span>{item.symbol}</span>
                   </td>
                   <td>${item.price.toFixed(4)}</td>
                   <td>{item.amount}</td>

@@ -72,6 +72,13 @@
   }
 }
 
+.user-coins-none {
+  border: 1px solid var(--borderColor);
+  border-radius: var(--borderRadius);
+  margin-bottom: var(--regularOffset);
+  padding: var(--regularOffset);
+}
+
 .table-title {
   text-align: center;
   margin-bottom: 15px;
@@ -166,6 +173,10 @@ td {
   }
 }
 
+.user-history {
+  min-height: 550px;
+}
+
 @media all and (max-width: 768px) {
   .profile {
     width: 95%;
@@ -191,6 +202,8 @@ td {
     display: none;
   }
 
+  
+
   .sidebar {
     width: 100%;
     .user-cash,
@@ -213,5 +226,14 @@ td {
 @media all and (max-width: 360px) {
   .table-history-wrap {
     min-height: 330px;
+  }
+
+  .table-history tbody tr td {
+    font-size: 0.8em;
+    padding: 10px;
+  }
+
+  .history-coin .wrap-img {
+    margin-right: 3px;
   }
 }

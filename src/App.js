@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import { Router } from '@reach/router';
-// import DevTools from 'mobx-react-devtools';
 
 import './style/table.scss';
 
@@ -27,7 +26,6 @@ const App = () => (
       </Router>
     </Suspense>
     <Footer/>
-    {/* <DevTools/> */}
   </React.Fragment>
 );
 

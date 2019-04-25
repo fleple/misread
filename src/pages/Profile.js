@@ -31,13 +31,16 @@ const Profile = (props) => {
           <h3>Cash: ${Number(userStore.userData.money).toFixed(4)}</h3>
         </div>
         {
-          userStore.userData.coins.length &&
-          <div className='user-coins'>
-            <UserCoins
-              userCoins={userStore.userData.coins}
-              coins={coinsStore.coins}
-            />
-          </div>
+          userStore.userData.coins.length
+          ? <div className='user-coins'>
+              <UserCoins
+                userCoins={userStore.userData.coins}
+                coins={coinsStore.coins}
+              />
+            </div>
+          : <div className='user-coins-none'>
+              <h3>You haven't any coins :'(</h3>
+            </div>
         }
         <div className='user-total-money'>
           <h2>Total</h2>

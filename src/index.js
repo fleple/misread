@@ -29,14 +29,6 @@ function initState() {
       .then(() => coinsStore.readSocket());
   }
 
-  // if(localStorage.misread) {
-  //   userStore.initUserFromLocalStorage();
-  // }
-
-  // coinsStore.fetchCoins()
-  //   .then(() => coinsStore.startSocket())
-  //   .then(() => coinsStore.readSocket());
-
   setInterval(() => {
     coinsStore.refreshData();
   }, 50000);

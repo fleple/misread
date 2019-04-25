@@ -7,15 +7,15 @@ const UserHistory = (props) => {
   return (
     <div className='user-history'>
       {
-        buyHistory.length && <div className='user-history-buy'>
+        buyHistory.length ? <div className='user-history-buy'>
          <TableHistory
           data={buyHistory}
           header='Buy Coins History'
         /> 
-        </div>
+        </div> : null
       }
       {
-        sellHistory.length > 0? <div className='user-history-sell'>
+        sellHistory.length > 0 ? <div className='user-history-sell'>
           <TableHistory
             data={sellHistory}
             header='Sell Coins History'

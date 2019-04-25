@@ -6,6 +6,8 @@ import {
   computed
 } from 'mobx';
 
+import postReq from '../helpers/postReq';
+
 configure({ enforceActions: 'observed' });
 
 class User {
@@ -13,7 +15,6 @@ class User {
   error = {};
 
   setUserData = dataUser => {
-    // console.log('res', dataUser);
     this.userData = dataUser;
     localStorage.misread = dataUser.token;
   }
@@ -25,41 +26,31 @@ class User {
   // actions
   signIn = submittedData => {
     console.log('submittedData', submittedData);
-    fetch('/api/signIn', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(submittedData)
-    }).then(res => res.json())
-    .then(json => this.setUserData(json.user));
+  
+    postReq('/api/signIn', submittedData)
+      .then(res => res.json())
+      .then(json => this.setUserData(json.user))
+      .catch(err => this.setError('signError', err));
   }
 
   login = loginData => {
     console.log('login data', loginData);
-    fetch('/api/login', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(loginData)
-    }).then(res => res.json())
-    .then(json => this.setUserData(json.user));
+
+    postReq('/api/login', loginData)
+      .then(res => res.json())
+      .then(json => {
+        if(json.error) { throw Error(json.error.message); }
+        this.setUserData(json.user);
+      })
+      .catch(err => this.setError('loginError', err));
   }
 
   initUserFromLocalStorage = () => {
-    return fetch('/api/auth', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ token: localStorage.misread })
-    })
-    .then(res => res.json())
-    .then(json => this.setUserData(json.user));
+
+    return postReq('/api/auth', {token: localStorage.misread })
+      .then(res => res.json())
+      .then(json => this.setUserData(json.user))
+      .catch(err => this.setError('initUserError', err));
   }
 
   logout = () => {
@@ -72,39 +63,27 @@ class User {
   buyCoins = (info) => {
     const token = localStorage.misread;
     console.log(info);
-    fetch('/api/buycoins', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ tradeInfo: info, token: token })
-    })
-    .then(res => res.json())
-    .then(json => {
-      if(json.error) { throw Error(json.error.message); }
-      this.setUserData(json.user);
-    })
-    .catch(err => this.setError('buy', err));
+
+    postReq('/api/buycoins', { tradeInfo: info, token: token })
+      .then(res => res.json())
+      .then(json => {
+        if(json.error) { throw Error(json.error.message); }
+        this.setUserData(json.user);
+      })
+      .catch(err => this.setError('buyError', err));
   }
 
   sellCoins = (info) => {
     const token = localStorage.misread;
     console.log('sell', info);
-    fetch('/api/sellcoins', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ tradeInfo: info, token: token })
-    })
-    .then(res => res.json())
-    .then(json => {
-      if(json.error) { throw Error(json.error.message); }
-      this.setUserData(json.user);
-    })
-    .catch(err => this.setError('sell', err));
+
+    postReq('/api/sellcoins', { tradeInfo: info, token: token })
+      .then(res => res.json())
+      .then(json => {
+        if(json.error) { throw Error(json.error.message); }
+        this.setUserData(json.user);
+      })
+      .catch(err => this.setError('sellError', err));
   }
 
   // should rename

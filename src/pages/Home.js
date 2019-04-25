@@ -61,8 +61,8 @@ const Home = () => {
             May the force be with you
           </p>
           <br/>
-          <h2>Make your pepe reach and happy</h2>
-          <h2>Асмысли ета</h2>
+          <h3>Make your pepe reach and happy</h3>
+          <h3>Асмысли ета</h3>
         </div>
       </div>
 
