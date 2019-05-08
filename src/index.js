@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 
+import switchTheme from './helpers/switchTheme';
+
 import App from './App';
 import './style/main.scss';
 
@@ -32,6 +34,10 @@ function initState() {
   setInterval(() => {
     coinsStore.refreshData();
   }, 50000);
+
+  if(localStorage.misreadTheme === 'light') {
+    switchTheme();
+  }
 
 }
 

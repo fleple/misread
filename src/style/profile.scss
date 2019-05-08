@@ -119,8 +119,8 @@ thead {
 
 td, th {
   color: var(--color);
-  font-weight: bolder;
-  padding: 15px;
+  // font-weight: bolder;
+  padding: 15px 5px;
 }
 
 tr {
@@ -224,6 +224,7 @@ td {
 }
 
 @media all and (max-width: 360px) {
+
   .table-history-wrap {
     min-height: 330px;
   }

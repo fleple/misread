@@ -26,8 +26,10 @@ export default () => {
   const rootStyle = document.documentElement.style;
   if(rootStyle.getPropertyValue('--bg') === white) {
     theme = darkTheme;
+    localStorage.misreadTheme = 'dark';
   } else {
     theme = lightTheme;
+    localStorage.misreadTheme = 'light';
   }
 
   Object.keys(theme).forEach(prop => {

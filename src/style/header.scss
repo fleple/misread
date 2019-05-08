@@ -80,10 +80,6 @@
   }
   &:hover {
     cursor: pointer;
-    // background-color: var(--bg);
-    // .rs-line {
-    //   background-color: var(--color);
-    // }
   }
 }
 
@@ -93,8 +89,8 @@
   background-color: var(--bg);
   width: 100%;
   z-index: -1;
-  transform: translateY(-380px);
-  transition: var(--trans);
+  transform: translate(700px,46px);
+  transition: all .3s ease;
   li{
     border-bottom: 1px solid var(--borderColor);
     height: 40px;
@@ -105,11 +101,6 @@
       padding: 10px;
       color: var(--color);
       display: block;
-      // transition: all .3s ease;
-      // &:hover {
-      //   color: red;
-      //   background-color: #fff;
-      // }
     }
     button {
       margin: 0 auto;

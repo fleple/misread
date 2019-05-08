@@ -54,11 +54,10 @@ const Home = () => {
           <img src={pepeWisdom} alt='wisdom frog'/>
         </div>
         <div className='wrap-text'>
-          <h1>{"*~{^-^}~*"} | Pepele</h1>
+          <h1>{"*~{^-^}~*"} | The Pepele</h1>
           <h2>cryptocurrency exchange simulator game</h2>
           <p>
-            For start you have $5k and all life data of cryptocurrency you need.<br/>
-            May the force be with you
+            For start you have $5k and all life data of cryptocurrency you need.
           </p>
           <br/>
           <h3>Make your pepe reach and happy</h3>
