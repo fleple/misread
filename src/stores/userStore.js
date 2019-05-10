@@ -29,7 +29,10 @@ class User {
   
     postReq('/api/signIn', submittedData)
       .then(res => res.json())
-      .then(json => this.setUserData(json.user))
+      .then(json => {
+        if(json.error) { throw Error(json.error.message); }
+        this.setUserData(json.user);
+      })
       .catch(err => this.setError('signError', err));
   }
 
@@ -46,7 +49,6 @@ class User {
   }
 
   initUserFromLocalStorage = () => {
-
     return postReq('/api/auth', {token: localStorage.misread })
       .then(res => res.json())
       .then(json => this.setUserData(json.user))

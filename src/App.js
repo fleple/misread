@@ -13,17 +13,22 @@ const Coins = React.lazy(() => import('./pages/Coins'));
 const SingleCoin = React.lazy(() => import('./pages/SingleCoin'));
 const Profile = React.lazy(() => import('./pages/Profile'));
 
+// import Home from './pages/Home';
+// import Coins from './pages/Coins';
+// import SingleCoin from './pages/SingleCoin';
+// import Profile from './pages/Profile';
+
 const App = () => (
   <React.Fragment>
     <Header/>
     <Suspense fallback={<LoadingPage/>}>
-      <Router primary={false}>
-        <NotFound default />
-        <Home path='/' />
-        <Coins path='/coins' />
-        <SingleCoin path='/coins/:coin' />
-        <Profile path='/profile' />
-      </Router>
+        <Router primary={false}>
+          <NotFound default />
+          <Home path='/' />
+          <Coins path='/coins' />
+          <SingleCoin path='/coins/:coin' />
+          <Profile path='/profile' />
+        </Router>
     </Suspense>
     <Footer/>
   </React.Fragment>

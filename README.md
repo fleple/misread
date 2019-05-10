@@ -1,6 +1,6 @@
 ## Pepele ~~(^.^)~~ wtf mzf
 
-<img src="view/main.png" align="center" height="420" width="740" >
+<img src="view/main.png" align="center" height="420" width="840" >
 
 #### To Do:
 
