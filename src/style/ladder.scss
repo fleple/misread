@@ -1,0 +1,61 @@
+.ladder {
+  margin-bottom: 20px;
+}
+
+.ladder-table {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 20px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-radius: 4px;
+}
+
+thead {
+  color: var(--color);
+  background-color: var(--theadBg);
+  font-size: 1.2em;
+}
+
+td, th {
+  color: var(--color);
+  padding: 10px;
+}
+
+tr {
+  // text-align: center;
+  margin-bottom: 1px;
+  border: 1px solid var(--borderColor);
+}
+
+tbody tr:hover {
+  cursor: pointer;
+}
+
+td {
+  font-size: 1.1em;
+}
+
+.btn-more {
+  padding: 15px 20px;
+  display: block;
+  font-size: 1.1em;
+  margin: 0 auto;
+  margin-top: 20px;
+  color: var(--color);
+  background: var(--bg);
+  border: 1px solid var(--borderColor);
+  border-radius: 4px;
+  transition: all .3s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    border-color: var(--color);
+  }
+}
+
+
+@media all and (max-width: 550px) {
+  .ladder-table {
+    width: 100%;
+  }
+}

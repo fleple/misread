@@ -31,7 +31,7 @@ class SingleCoin extends Component {
   }
 
   render() {
-    const { coinsStore, userStore, uri } = this.props;
+    const { coinsStore, profileStore, uri } = this.props;
     const currentId = uri.split('/')[2];
     const currentCoin = coinsStore.getCoin(currentId);
     if(currentCoin) {
@@ -48,17 +48,17 @@ class SingleCoin extends Component {
               percent={currentCoin.changePercent24Hr}
             />
             {
-              userStore.userData.name ? <>
+              profileStore.userData.name ? <>
                 <CoinTrade
                   price={currentCoin.priceUsd}
                   id={currentCoin.id}
                   symbol={currentCoin.symbol}
-                  buy={userStore.buyCoins}
-                  sell={userStore.sellCoins}
+                  buy={profileStore.buyCoins}
+                  sell={profileStore.sellCoins}
                 />
                 <UserMoney
-                  user={userStore.userData}
-                  counts={userStore.coinCounts}
+                  user={profileStore.userData}
+                  counts={profileStore.coinCounts}
                   symbol={currentCoin.symbol}
                   id={currentCoin.id}
                 />
@@ -88,4 +88,4 @@ class SingleCoin extends Component {
   }
 }
 
-export default inject('coinsStore', 'userStore')(observer(SingleCoin));
+export default inject('coinsStore', 'profileStore')(observer(SingleCoin));

@@ -8,17 +8,17 @@ import UserHistory from '../components/Profile/UserHistory';
 import '../style/profile.scss';
 
 const Profile = (props) => {
-  const { userStore, coinsStore } = props;
+  const { profileStore, coinsStore } = props;
 
-  if(!userStore.userData.name) {
+  if(!profileStore.userData.name) {
     return <Redirect from="/" to="not found"/>;
   }
 
-  let sum = userStore.userData.money;
-  for(let i = 0; i < userStore.userData.coins.length; i++) {
-    let current = coinsStore.coins[userStore.userData.coins[i].id];
+  let sum = profileStore.userData.money;
+  for(let i = 0; i < profileStore.userData.coins.length; i++) {
+    let current = coinsStore.coins[profileStore.userData.coins[i].id];
     if(current && current.priceUsd) {
-      sum += Number(current.priceUsd) * userStore.userData.coins[i].count;
+      sum += Number(current.priceUsd) * profileStore.userData.coins[i].count;
     }
   }
 
@@ -26,15 +26,15 @@ const Profile = (props) => {
     <div className='profile'>
       <div className='sidebar'>
         <div className='user-cash'>
-          <h2>{userStore.userData.name}</h2>
+          <h2>{profileStore.userData.name}</h2>
           <hr/>
-          <h3>Cash: ${Number(userStore.userData.money).toFixed(4)}</h3>
+          <h3>Cash: ${Number(profileStore.userData.money).toFixed(4)}</h3>
         </div>
         {
-          userStore.userData.coins.length
+          profileStore.userData.coins.length
           ? <div className='user-coins'>
               <UserCoins
-                userCoins={userStore.userData.coins}
+                userCoins={profileStore.userData.coins}
                 coins={coinsStore.coins}
               />
             </div>
@@ -50,12 +50,12 @@ const Profile = (props) => {
       </div>
       <div className='user-actions'>
         <UserHistory
-          buyHistory={userStore.userData.buyHistory}
-          sellHistory={userStore.userData.sellHistory}
+          buyHistory={profileStore.userData.buyHistory}
+          sellHistory={profileStore.userData.sellHistory}
         />
       </div>
     </div>
   )
 }
 
-export default inject('userStore', 'coinsStore')(observer(Profile));
+export default inject('profileStore', 'coinsStore')(observer(Profile));

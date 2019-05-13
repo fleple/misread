@@ -30,7 +30,7 @@ class Header extends Component {
 
   render() {
     const { isOpenedModal, toSign } = this.state;
-    const { userStore } = this.props;
+    const { profileStore } = this.props;
 
     const toggleMenu = () => {
       this.setState({ isOpenedMenu: !this.state.isOpenedMenu });
@@ -51,9 +51,9 @@ class Header extends Component {
             <li className='coins-item'>
               <Link to='/coins'>Coins</Link>
             </li>
-            { userStore.userData.name ?
+            { profileStore.userData.name ?
                 <li className='profile-item'>
-                  <Link to='/profile'>{ userStore.userData.name }</Link>
+                  <Link to='/profile'>{ profileStore.userData.name }</Link>
                 </li> :
                 <li className='profile-item' onClick={this.toggleModal}>
                   <button>Sign In</button>
@@ -71,9 +71,9 @@ class Header extends Component {
             <li>
               <Link to='/coins'>Coins</Link>
             </li>
-            { userStore.userData.name ?
+            { profileStore.userData.name ?
               <li>
-                <Link to='/profile'>{ userStore.userData.name }</Link>
+                <Link to='/profile'>{ profileStore.userData.name }</Link>
               </li>
                 :
               <li className='profile-item' onClick={this.toggleModal}>
@@ -81,9 +81,9 @@ class Header extends Component {
               </li>
             }
             {
-              userStore.userData.name &&
+              profileStore.userData.name &&
               <li>
-                <button className='user-logout' onClick={userStore.logout}>
+                <button className='user-logout' onClick={profileStore.logout}>
                   <img src={logoutIcon} alt='logout'/>
                 </button>  
               </li>
@@ -97,8 +97,8 @@ class Header extends Component {
         </div>
         <div className='nav-right'>
           {
-            userStore.userData.name &&
-            <button className='user-logout' onClick={userStore.logout}>
+            profileStore.userData.name &&
+            <button className='user-logout' onClick={profileStore.logout}>
               <img src={logoutIcon} alt='logout'/>
             </button>
           }
@@ -123,4 +123,4 @@ class Header extends Component {
 
 }
 
-export default inject('userStore')(observer(Header));
+export default inject('profileStore')(observer(Header));

@@ -8,7 +8,7 @@ const SignIn = (props) => {
 
   const submit = (e) => {
     e.preventDefault();
-    props.userStore.signIn({ name, email, password });
+    props.profileStore.signIn({ name, email, password });
     props.close();
   }
 
@@ -40,4 +40,4 @@ const SignIn = (props) => {
   )
 }
 
-export default inject('userStore')(SignIn);
+export default inject('profileStore')(SignIn);

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Ladder from '../components/Home/Ladder';
+
 import RuleCart from '../components/Home/RuleCart';
 
 import '../style/home.scss';
@@ -64,7 +66,7 @@ const Home = () => {
           <h3>Асмысли ета</h3>
         </div>
       </div>
-
+      
       <div className='rules'>
         {
           rules.map(rule => (
@@ -77,7 +79,10 @@ const Home = () => {
           ))
         }
       </div>
+      
+      <Ladder/>
 
+      
     </main >
   );
 }

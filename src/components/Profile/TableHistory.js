@@ -53,7 +53,7 @@ const TableHistory = (props) => {
                     <span>{item.symbol}</span>
                   </td>
                   <td>${item.price.toFixed(4)}</td>
-                  <td>{item.amount}</td>
+                  <td>{Number(item.amount).toFixed(4)}</td>
                   <td>${(item.amount * item.price).toFixed(4)}</td>
                   <td>
                     <span className='history-time'>{new Date(+item.date).toLocaleTimeString()} </span>

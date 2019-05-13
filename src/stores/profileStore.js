@@ -10,7 +10,7 @@ import postReq from '../helpers/postReq';
 
 configure({ enforceActions: 'observed' });
 
-class User {
+class Profile {
   userData = {};
   error = {};
 
@@ -25,8 +25,6 @@ class User {
 
   // actions
   signIn = submittedData => {
-    console.log('submittedData', submittedData);
-  
     postReq('/api/signIn', submittedData)
       .then(res => res.json())
       .then(json => {
@@ -37,8 +35,6 @@ class User {
   }
 
   login = loginData => {
-    console.log('login data', loginData);
-
     postReq('/api/login', loginData)
       .then(res => res.json())
       .then(json => {
@@ -64,7 +60,7 @@ class User {
 
   buyCoins = (info) => {
     const token = localStorage.misread;
-    console.log(info);
+    console.log('buy', info);
 
     postReq('/api/buycoins', { tradeInfo: info, token: token })
       .then(res => res.json())
@@ -101,7 +97,7 @@ class User {
 
 }
 
-decorate(User, {
+decorate(Profile, {
   userData: observable,
   error: observable,
   setUserData: action,
@@ -110,4 +106,4 @@ decorate(User, {
   coinCounts: computed
 });
 
-export default new User();
+export default new Profile();

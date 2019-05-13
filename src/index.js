@@ -8,15 +8,16 @@ import App from './App';
 import './style/main.scss';
 
 import coinsStore from './stores/coinsStore';
-import userStore from './stores/userStore';
+import profileStore from './stores/profileStore';
+import usersStore from './stores/usersStore';
 
 function initState() {
   if(localStorage.misread) {
-    userStore.initUserFromLocalStorage()
+    profileStore.initUserFromLocalStorage()
       .then(() => coinsStore.fetchCoins())
       .then(() => {
         const coins = coinsStore.coins;
-        const userCoins = userStore.userData.coins;
+        const userCoins = profileStore.userData.coins;
         for(let i = 0; i < userCoins.length; i++) {
           if(!(userCoins[i].id in coins)) {
             coinsStore.fetchCoin(userCoins[i].id);
@@ -46,7 +47,8 @@ initState();
 
 const stores = {
   coinsStore,
-  userStore
+  profileStore,
+  usersStore
 };
 
 ReactDOM.render(
