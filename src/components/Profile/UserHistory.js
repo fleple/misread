@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import TableHistory from './TableHistory';
 
-
 const UserHistory = (props) => {
   const { buyHistory, sellHistory } = props;
   return (

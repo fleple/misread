@@ -58,10 +58,10 @@ td {
 }
 
 @media all and (max-width: 400px) {
-  .table-coin-id, .rank {
+  .table-coin-id, .rank, .coin-market, .coin-volume {
     display: none;
   }
   td, th {
-    padding: 15px 5px;
+    padding: 20px 5px;
   }
 }

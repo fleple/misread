@@ -17,8 +17,8 @@ const CoinsTable = (props) => {
           <th>Coin</th>
           <th>Price</th>
           <th>Change 24h</th>
-          <th>Market Cap</th>
-          <th>Volume 24h</th>
+          <th className='coin-market'>Market Cap</th>
+          <th className='coin-volume'>Volume 24h</th>
         </tr>
       </thead>
       <tbody>
@@ -41,8 +41,8 @@ const CoinsTable = (props) => {
               <td className={coins[coin].changePercent24Hr > 0 ? "green" : "red"}>
                 {Number(coins[coin].changePercent24Hr).toFixed(2)}%
               </td>
-              <td>${shortPrice(coins[coin].marketCapUsd)}</td>
-              <td>${shortPrice(coins[coin].volumeUsd24Hr)}</td>
+              <td className='coin-market'>${shortPrice(coins[coin].marketCapUsd)}</td>
+              <td className='coin-volume'>${shortPrice(coins[coin].volumeUsd24Hr)}</td>
             </tr>
           ))
         }

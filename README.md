@@ -1,4 +1,4 @@
-## Pepele ~~(^.^)~~ wtf mzf
+## Pepele ~(^.^)~
 
 <img src="view/main.png" align="center" height="420" width="840" >
 

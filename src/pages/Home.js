@@ -9,11 +9,11 @@ import '../style/home.scss';
 import pepeWisdom from '../assets/wisdom.png';
 
 import panic from '../assets/panic.png';
-import pyramid from '../assets/pyramid.png';
+// import pyramid from '../assets/pyramid.png';
 import jude from '../assets/jude.png';
-import stupid from '../assets/stupid.png';
+// import stupid from '../assets/stupid.png';
 import success from '../assets/success.png';
-import guns from '../assets/guns.png';
+// import guns from '../assets/guns.png';
 
 const rules = [
   {
@@ -21,34 +21,34 @@ const rules = [
     text: "Lost a lot of money? They arn't real, try again",
     imgSrc: panic
   },
-  {
-    title: "Don't believe",
-    text: "Just enjoy and have fun. Things are not matter",
-    imgSrc: pyramid
-  },
+  // {
+  //   title: "Don't believe",
+  //   text: "Just enjoy and have fun. Things are not matter",
+  //   imgSrc: pyramid
+  // },
   {
     title: "Move your money",
     text: "Buy and sell. Do not store in fiat",
     imgSrc: jude
   },
-  {
-    title: "Don't be foolish",
-    text: "Buy red, sell green, improvise",
-    imgSrc: stupid
-  },
+  // {
+  //   title: "Don't be foolish",
+  //   text: "Buy red, sell green, improvise",
+  //   imgSrc: stupid
+  // },
   {
     title: "Uaghh!",
     text: "Get a lot? Don't stop",
     imgSrc: success
   },
-  {
-    title: "State doesn't matter",
-    text: "Load up on guns, bring your friends",
-    imgSrc: guns
-  },
+  // {
+  //   title: "State doesn't matter",
+  //   text: "Load up on guns, bring your friends",
+  //   imgSrc: guns
+  // },
 ];
 
-const Home = () => {
+const Home = (props) => {
   return (
     <main className='home-container'>
       <div className='welcome-cart'>
@@ -59,13 +59,14 @@ const Home = () => {
           <h1>{"*~{^-^}~*"} | The Pepele</h1>
           <h2>cryptocurrency exchange simulator game</h2>
           <p>
-            For start you have $5k and all life data of cryptocurrency you need.
+            For start you have $5k and the whole live data of cryptocurrency you need.
           </p>
           <br/>
           <h3>Make your pepe reach and happy</h3>
-          <h3>Асмысли ета</h3>
         </div>
       </div>
+
+      <Ladder nav={props.navigate}/>
       
       <div className='rules'>
         {
@@ -79,9 +80,6 @@ const Home = () => {
           ))
         }
       </div>
-      
-      <Ladder/>
-
       
     </main >
   );
