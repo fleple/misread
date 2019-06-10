@@ -80,6 +80,11 @@ class Header extends Component {
                 <button>Sign In</button>
               </li>
             }
+            <li>
+              <button className='theme-switcher' onClick={switchTheme}>
+                <img src={nightIcon} alt='switch'/>
+              </button>
+            </li>
             {
               profileStore.userData.name &&
               <li>
@@ -88,23 +93,18 @@ class Header extends Component {
                 </button>  
               </li>
             }
-            <li>
-              <button className='theme-switcher' onClick={switchTheme}>
-                <img src={nightIcon} alt='switch'/>
-              </button>
-            </li>
           </ul>
         </div>
         <div className='nav-right'>
+          <button className='theme-switcher' onClick={switchTheme}>
+            <img src={nightIcon} alt='switch'/>
+          </button>
           {
             profileStore.userData.name &&
             <button className='user-logout' onClick={profileStore.logout}>
               <img src={logoutIcon} alt='logout'/>
             </button>
           }
-          <button className='theme-switcher' onClick={switchTheme}>
-            <img src={nightIcon} alt='switch'/>
-          </button>
         </div>
         { isOpenedModal && (
           <Modal close={this.toggleModal}>

@@ -1,0 +1,77 @@
+$switchWidth: 64px;
+$switchHeight: 32px;
+$switchPadding: 3px;
+
+$switchAnimationDuration: .2s;
+
+$colorBlack: hsl(240, 8%, 12%);
+
+$colorSky: lighten(#1e90ff,5%);
+$colorSun: lighten(#f9d71c,20%);
+$colorMoon: #eeeeee;
+
+.switch {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  position: relative;
+  width: $switchWidth;
+  height: $switchHeight;
+  border-radius: 50em;
+  padding: $switchPadding 5px;
+  border: 1px solid #eee;
+  // box-shadow: 0px 0px 1px 1px #eee;
+
+  &__input, &__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  &__input {
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+
+    &:checked + .switch__label {
+      background-color: $colorBlack;
+    }
+
+    &:checked + .switch__label + .switch__marker {
+      transform: translateX($switchWidth / 2);
+      background: $colorBlack;
+      box-shadow: inset 6px -2px 0px $colorMoon;
+    }
+
+  }
+  
+  &__label {
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    user-select: none;
+    background-color: $colorSky;
+    border-radius: inherit;
+    z-index: 1;
+    transition: all $switchAnimationDuration;
+      &:hover {
+      cursor: pointer;
+    }
+  }
+  
+  &__marker {
+    position: relative;
+    background-color: $colorSun;
+    width: $switchHeight - $switchPadding * 2;
+    height: $switchHeight - $switchPadding * 2;
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+    left: $switchPadding;
+    transition: all $switchAnimationDuration ease;
+    will-change: left;
+  }
+}

@@ -4,8 +4,8 @@ import { Router } from '@reach/router';
 import './style/table.scss';
 
 import Header from './ui/Header';
-import LoadingPage from './ui/LoadingPage';
 import Footer from './ui/Footer';
+import Loading from './ui/Loading';
 import NotFound from './pages/NotFound';
 
 const Home = React.lazy(() => import('./pages/Home'));
@@ -22,7 +22,7 @@ const AnotherUser = React.lazy(() => import('./pages/AnotherUser'));
 const App = () => (
   <React.Fragment>
     <Header/>
-    <Suspense fallback={<LoadingPage/>}>
+    <Suspense fallback={<Loading/>}>
       <Router primary={false}>
         <NotFound default />
         <Home path='/' />

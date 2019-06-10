@@ -8,7 +8,7 @@ const UserMoney = (props) => {
       <h2>{name}</h2>
       <hr/>
       <p>Cach: ${Number(money).toFixed(4)}</p>
-      <p>{props.id} {props.symbol}:  {count}</p>
+      <p>{props.id} {props.symbol}:  {count.toFixed(4)}</p>
     </div>
   );
 }
