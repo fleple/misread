@@ -7,7 +7,7 @@
     "chart.js": "^2.7.3",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "react": "^16.8.1",
     "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.8.1",
